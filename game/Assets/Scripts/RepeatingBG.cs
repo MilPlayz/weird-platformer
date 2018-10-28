@@ -8,10 +8,12 @@ public class RepeatingBG : MonoBehaviour {
 	public dir direction;
 	public float endX;
 	public float StartX;
+	public GameObject player;
 	//public RectTransform t;
 
 	void Start()
 	{
+		player = gameObject.transform.parent.gameObject;
 	//	t = gameObject.GetComponent<RectTransform>();
 
 	}
@@ -35,9 +37,9 @@ public class RepeatingBG : MonoBehaviour {
 			transform.Translate(Vector2.right * speed * Time.deltaTime);
 		}
 
-		if(transform.position.x <= endX)
+		if(transform.position.x <= player.transform.position.x + endX)
 		{
-			Vector2 pos = new Vector2(StartX, transform.position.y);
+			Vector2 pos = new Vector2(player.transform.position.x + player.transform.position.x + StartX, transform.position.y);
 			transform.position = pos;
 
 		}
